@@ -1,14 +1,13 @@
 package com.fakeplayer;
 
+import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
 import java.nio.file.Path;
 
 @Plugin(
@@ -19,16 +18,20 @@ import java.nio.file.Path;
 )
 public class FakePlayerPlugin {
 
-    private final ProxyServer proxyServer;
-    private final Logger logger;
-    private final Path dataDirectory;
-    private FakePlayerManager fakePlayerManager;
+    @Inject
+    private ProxyServer proxyServer;
 
     @Inject
-    public FakePlayerPlugin(ProxyServer proxyServer, Logger logger, @DataDirectory Path dataDirectory) {
-        this.proxyServer = proxyServer;
-        this.logger = logger;
-        this.dataDirectory = dataDirectory;
+    private Logger logger;
+
+    @Inject
+    @DataDirectory
+    private Path dataDirectory;
+
+    private FakePlayerManager fakePlayerManager;
+
+    public FakePlayerPlugin() {
+        // Required by some Velocity loader implementations for plugin construction.
     }
 
     @Subscribe
