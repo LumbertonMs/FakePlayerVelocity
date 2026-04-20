@@ -1,0 +1,8 @@
+{
+  "id": "fakeplayer",
+  "name": "FakePlayerVelocity",
+  "version": "1.0.0",
+  "description": "A Velocity plugin that creates fake players on servers",
+  "authors": ["Development Team"],
+  "main": "com.fakeplayer.FakePlayerPlugin"
+}
